@@ -1,4 +1,4 @@
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../extras/ProblemCard";
 
 export const CapitalizeWords = () => {
   const animals = ["dog", "cat", "bird"];
@@ -10,6 +10,12 @@ export const CapitalizeWords = () => {
       question="Render each word with the first letter capitalized."
       dataPreview={animals}
     >
+      {animals.map((animal) => {
+
+        const fullWord = animal.charAt(0).toUpperCase() + animal.slice(1);
+        
+        return <div>{fullWord}</div>;
+      })}
     </ProblemCard>
   );
 };

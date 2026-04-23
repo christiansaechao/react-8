@@ -14,6 +14,7 @@ function ProblemCard(props: {
         padding: 16,
         borderRadius: 12,
         marginBottom: 16,
+        backgroundColor: "black"
       }}
     >
       <h3 style={{ margin: 0 }}>{title}</h3>
@@ -31,7 +32,7 @@ function ProblemCard(props: {
         </details>
       )}
 
-      <div style={{ padding: 12, background: "#fafafa", borderRadius: 10 }}>
+      <div style={{ padding: 12, background: "black", borderRadius: 10 }}>
         {children}
       </div>
     </section>
