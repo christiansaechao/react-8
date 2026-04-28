@@ -31,7 +31,7 @@ function ProblemCard(props: {
         </details>
       )}
 
-      <div style={{ padding: 12, background: "#fafafa", borderRadius: 10 }}>
+      <div style={{ padding: 12, background: "#272727", borderRadius: 10 }}>
         {children}
       </div>
     </section>

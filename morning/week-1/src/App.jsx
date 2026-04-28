@@ -10,6 +10,7 @@ import { EvensOnly } from "./filtering/EvensOnly";
 import { PreFilter } from "./filtering/PreFilter";
 import { SumNumbers } from "./reducing/SumNumbers";
 import { CountOccurences } from "./reducing/CountOccurences";
+import ProblemCard from "./extras/ProblemCard";
 
 // component
 function App() {
@@ -19,7 +20,12 @@ function App() {
 
   return (
     <>
+      <ProblemCard>
+        <div></div>
+      </ProblemCard>
+
       <CapitalizeWords />
+
       <RenderFromData />
       <EvensOnly />
       <PreFilter />

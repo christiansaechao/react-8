@@ -1,4 +1,7 @@
-import ProblemCard from "../components/ProblemCard";
+import ProblemCard from "../extras/ProblemCard";
+
+// array.filter((item) => some condition);
+
 export const PriceGreaterThan20 = () => {
   const products = [
     { id: 1, name: "Sticker Pack", price: 5 },
@@ -12,6 +15,21 @@ export const PriceGreaterThan20 = () => {
       method="filter"
       question="Render products with price > 20."
       dataPreview={products}
-    ></ProblemCard>
+    >
+      {/* [keyboard, mousepad].map(() => {}) */}
+      {products
+        .filter((product) => product.price > 20)
+        .map((product) => {
+          
+          const productTransformed = product.name.toLowerCase()
+
+
+          return (
+            <div>
+              <h3>{productTransformed}</h3>
+            </div>
+          );
+        })}
+    </ProblemCard>
   );
 };

@@ -1,35 +1,31 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { CapitalizeWords } from "./mapping/CapitalizeWords";
+import { ConditionalRender } from "./mapping/ConditionalRender";
+import { FullNames } from "./mapping/FullNames";
+import { PriceGreaterThan20 } from "./filtering/PriceGreaterThan20";
+import { MultipleConditions } from "./filtering/MultipleConditions";
+import { SearchSimulation } from "./filtering/SearchSimulation";
+import { CountItems } from "./reducing/CountItems";
+// array methods: map, filter, reduce
+// list / array: => returns a new array
+// iterates over the list, returns new array;
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CapitalizeWords />
+      <ConditionalRender />
+      <FullNames />
+      <PriceGreaterThan20 />
+      <MultipleConditions />
+      <SearchSimulation searchTerm="Node" />
+      <CountItems />
     </>
-  )
+
+  );
 }
 
-export default App
+export default App;
