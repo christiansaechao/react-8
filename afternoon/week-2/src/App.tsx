@@ -1,20 +1,20 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "./assets/vite.svg";
-import heroImg from "./assets/hero.png";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import SmartCounter from "./components/useState/Counter";
-import ThemeToggle from "./components/useState/ThemeToggle";
-import ContactForm from "./components/useState/SimpleForm";
-import CharacterCounter from "./components/useState/CharacterCountInput"
+import TitleUpdater from "./components/useEffect/SyncState";
+import RenderLogger from "./components/useEffect/RenderLogger";
+import RandomUser from "./components/useEffect/FetchData";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [click, setClick] = useState(false);
+  const [second, setSecond] = useState(false);
+
+  useEffect(() => {
+    console.log("useEffect");
+  }, []);
 
   return (
     <>
-      {/* <ContactForm /> */}
-      <CharacterCounter/>
+      <RandomUser />
     </>
   );
 }

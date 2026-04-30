@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Counter from "./Counter";
 
 /*
 Requirements:
@@ -9,5 +10,9 @@ Requirements:
 */
 
 export default function TitleUpdater() {
-  return <div>{/* CODE HERE */}</div>;
+  return (
+    <div>
+      <Counter />
+    </div>
+  );
 }

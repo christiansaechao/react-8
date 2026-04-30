@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import TitleUpdater from "./SyncState";
 
 /*
 Requirements:
@@ -12,5 +13,24 @@ Requirements:
 */
 
 export default function RenderLogger() {
-  return <div>{/* CODE HERE */}</div>;
+  const [name, setName] = useState("");
+
+  useEffect(() => {
+    console.log("name change");
+  }, [name]);
+
+  return (
+    <div>
+      {/* CODE HERE */}
+      <TitleUpdater />
+      <label htmlFor="name">INPUT </label>
+      <input
+        name="name"
+        placeholder="name"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+    </div>
+  );
 }
