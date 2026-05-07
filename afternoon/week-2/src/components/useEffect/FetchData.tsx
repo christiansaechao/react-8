@@ -36,13 +36,11 @@ export default function RandomUser() {
   const url = "https://randomuser.me/api?results=10";
 
   function fetchData() {
-    try {
-      fetch(url) // some time
-        .then((response) => response.json()) //
-        .then(({ results }) => setData(results)); //
-    } catch (err: any) {
-      throw new Error(err);
-    }
+    fetch(url) // some time
+      .then((response) => response.json())
+      .then(({ results }) => setData(results))
+      .finally(() => {})
+      .catch(() => {});
   }
 
   useEffect(() => {

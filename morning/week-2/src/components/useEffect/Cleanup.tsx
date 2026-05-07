@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /*
 Requirements:
@@ -9,5 +9,43 @@ Requirements:
 */
 
 export default function Timer() {
-  return <div>{/* CODE HERE */}</div>;
+  const [count, setCount] = useState(0);
+  
+  /*
+
+   keep track of value, when updated doesn't cause a rerender
+
+   let ref = useRef(0);
+
+  function handleClick() {
+    ref.current = ref.current + 1;
+    alert('You clicked ' + ref.current + ' times!');
+  }
+
+  return (
+    <button onClick={handleClick}>
+      Click me!
+    </button>
+  );
+   */
+  const timerId = useRef(null);
+
+  //  if (timerId.current) return;
+
+
+  timerId.current = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+
+    console.log("Rerendering");
+    return () => clearInterval(timer);
+
+
+  // useEffect(() => {
+
+   
+  // }, [count]);
+  
+
+  return <div>{count}</div>;
 }

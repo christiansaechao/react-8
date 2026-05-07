@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import { TodoPage } from "./pages/TodoPage";
+import { SettingsPage } from "./pages/SettingsPage";
+import { MyTodos } from "./pages/MyTodos";
+import { Routes, Route, Link } from "react-router";
+
+/**
+ * useState
+ * TODO App
+ * - add a todo
+ * - delete a todo
+ * - mark complete on todo
+ */
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/settings">Settings</Link>
+        <Link to="/mytodos">To do</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<TodoPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
+        <Route path="/mytodos" element={<MyTodos />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
