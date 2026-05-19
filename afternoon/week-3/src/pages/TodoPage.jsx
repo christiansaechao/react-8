@@ -2,16 +2,10 @@ import React, { useState } from "react";
 import { TodoItem } from "../components/TodoItem";
 
 export const TodoPage = () => {
-  const [todos, setTodos] = useState([
-    { todo: "Eat breakfast", isComplete: false },
-    { todo: "Brush Teeth", isComplete: false },
-  ]);
   const [inputValue, setInputValue] = useState();
-
   return (
     <>
       <h2>Todo App</h2>
-
       <input
         value={inputValue}
         style={{ border: "1px solid white" }}
@@ -26,19 +20,7 @@ export const TodoPage = () => {
         Add Todo
       </button>
 
-      <ul>
-        {todos.map((todo, index) => {
-          return (
-            <TodoItem
-              todo={todo}
-              key={index}
-              index="12"
-              todos={todos}
-              setTodos={setTodos}
-            />
-          );
-        })}
-      </ul>
+      <TodoItem />
     </>
   );
 };

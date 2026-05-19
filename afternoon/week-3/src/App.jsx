@@ -1,9 +1,5 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import { TodoPage } from "./pages/TodoPage";
-import { SettingsPage } from "./pages/SettingsPage";
-import { MyTodos } from "./pages/MyTodos";
-import { Routes, Route, Link } from "react-router";
 
 /**
  * useState
@@ -13,19 +9,50 @@ import { Routes, Route, Link } from "react-router";
  * - mark complete on todo
  */
 
+// http://localhost:5173/
+
 function App() {
+  const [timerState, setTimerState] = useState(null);
+  const [time, setTime] = useState(0);
+  const [elapsedTime, setElapsedTime] = useState(0);
+
+  function handleStart() {
+    setTimerState((prev) => {
+      const next = !prev;
+
+      if (!next) {
+        
+      }
+
+      localStorage.setItem("timerState", JSON.stringify(next));
+      return next;
+    });
+  }
+
+  useEffect(() => {
+    if (!timerState) return;
+    const intervalId = setInterval(() => {
+      setTime((prev) => prev + 1);
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, [timerState]);
+
+  useEffect(() => {
+    const state = localStorage.getItem("timerState");
+
+    if (state !== null) {
+      setTimerState(JSON.parse(state));
+    }
+  }, []);
+
   return (
     <>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/settings">Settings</Link>
-        <Link to="/mytodos">To do</Link>
-      </nav>
-      <Routes>
-        <Route path="/" element={<TodoPage />} />
-        <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/mytodos" element={<MyTodos />} />
-      </Routes>
+      {timerState + ""}
+      {time}
+      <button onClick={() => handleStart()}>
+        {timerState ? "Stop" : "Start"}
+      </button>
     </>
   );
 }
