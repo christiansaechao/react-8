@@ -13,10 +13,16 @@ import { CountOccurences } from "./reducing/CountOccurences";
 import ProblemCard from "./extras/ProblemCard";
 
 // component
+
+// port 5173
 function App() {
   // html
 
   const cars = [{ name: "BMW", color: "red" }, "Honda", "Toyota"];
+
+  const someFunc = () => {
+    fetch("http://localhost:3000/")
+  }
 
   return (
     <>
