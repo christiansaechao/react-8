@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+
+
+/**
+ * Users
+ * ------------------------
+ * id (primary key)
+ * name varchar (not null)
+ * 
+ * 
+ * Shopping Cart 
+ * ------------------------
+ * user_id (foreign key)
+ * product_id (foreign key)
+ * 
+ * 
+ * Products
+ * ------------------------
+ * id (primary key)
+ * name (not null)
+ * price (not null)
+ * 
+ * 
+ */
+
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Users {
+  id   Int @id @default(autoincrement())
+  name String?
+  address String?
+  shoppingCarts ShoppingCart[]
+
+
+  // @@map("users")
+}
+
+model ShoppingCart {
+  // foreign keys
+  shoppingCartId Int @id @default(autoincrement())
+  product Product @relation(fields: [productId], references:[id])
+  productId Int
+  purchaser Users @relation(fields: [purchaserId], references: [id])
+  purchaserId Int
+
+}
+
+model Product { 
+
+  id   Int @id @default(autoincrement())
+  name String
+  price Int
+  shoppingCarts ShoppingCart[]
+
+}
+
+
+/*
+* check the prisma doc on how to create models
+*/
+
