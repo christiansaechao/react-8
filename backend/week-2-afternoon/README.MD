@@ -1,48 +1,32 @@
-/**
- * Users
- * ------------------------
- * id primary key
- * name varchar
- * address varchar
- * 
- * Shopping Cart 
- * ------------------------
- * user_id
- * product_id
- * 
- * 
- * Products
- * ------------------------
- * id
- * name
- * price
- * 
- * 
- */
+Authentication
 
+Login
+Require: username and password
 
- Romane D.
-    - get users
-    - get shopping cart 
-    - get products
+Routes
+   - /Login
+Controllers
+   - LogInController()
+      - call the service 
+      - send back the user information
+      - OR send back error
+      - validate the response from the db that user exists and has the correct credentials
+Services
+   - LogInService()
+      - Check / query for the user
 
- Lena D.
-    - create shopping cart
-    - create users
-    - create products
+Sign Up
 
- Joel M.
-    - create tables
-
- Maelo
-    - update users
-    - update shopping cart
-    - update products 
-
-Adi
-    - middleware
-    - log out requests
-    - validation on users
-
-Yang
-    - delete routes
+Routes
+   - POST: /sign-up
+Controllers
+   - SignUpController()
+      - username and password
+      - hash password here
+      - generate jwt token here
+      - call service
+      - send the user
+Services
+   - db layer
+      - create the user
+      - send it back to the controller

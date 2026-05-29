@@ -13,8 +13,9 @@ datasource db {
 }
 
 model Users {
-  id   String @id @default(uuid()) @db.Uuid
-  name String
+  id       String @id @default(uuid()) @db.Uuid
+  username String
+  password String
 
   @@map("users")
 }

@@ -6,6 +6,9 @@ import { prisma } from "./utils/prismaClient.js";
 import UsersRouter from "./routes/routes.user.js";
 import ProductRouter from "./routes/routes.product.js";
 import CartRouter from "./routes/routes.cart.js";
+import signUpRoutes from "./routes/signUpRoutes.ts";
+import logInRoutes from "./routes/routes.logIn.ts";
+
 
 const app = express();
 app.use(cors());
@@ -14,7 +17,10 @@ app.use(express.json());
 app.use("/users", UsersRouter);
 app.use("/cart", CartRouter);
 app.use("/product", ProductRouter);
+app.use("/signup", signUpRoutes);
+app.use("/login", logInRoutes);
 
+// app.use("/sign-up", sign)
 // Health Check (base route)
 app.get("/", (req, res) => {
   return res.status(200).send({ msg: "Successfully reaching the backend." });
